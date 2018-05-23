@@ -17,8 +17,8 @@ objeto = {
  let listCards = [...document.querySelectorAll('.card')]; //ECMAScript5 NodeList to array 
  let stars = document.querySelectorAll('.fa-star');  // stars of moves
  let moveWrite = document.querySelector(".moves");   // moves of cards
- var newListCards = shuffle(listCards);
- var t; // variable for manipulate setTimeout and clearTimeout of watch
+ let newListCards = shuffle(listCards);
+ let t; // variable for manipulate setTimeout and clearTimeout of watch
  
  /* Click to restart game button */
  var botton = document.querySelector(".restart");
@@ -117,9 +117,10 @@ function defaultMoves(elemento){
     if ( (objeto.default == 0) & (elemento.getAttributeNode("class").value != "card match open show")){
         objeto.element1 = elemento.firstChild.nextSibling;
         ++objeto.default;
-    }else if((objeto.default == 1) & (elemento.getAttributeNode("class").value != "card match open show")){
+    }else if((objeto.default == 1) & ((elemento.getAttributeNode("class").value != "card match open show"))){
         objeto.element2 = elemento.firstChild.nextSibling;
         objeto.default = 0;
+        console.log("Hola");
         ++objeto.moves;
         
         paintStars();   // paint stars
@@ -159,7 +160,7 @@ function compareElements(element1,element2){
 function compareCouples(){
 
         const cross = document.querySelector(".cross");
-        const results = document.getElementById("results");
+        const results = document.querySelector(".results");
         const playAgain = document.querySelector('.playAgain');
         const showResults = document.querySelector(".showResults");
 
@@ -196,14 +197,14 @@ function paintStars(){
         stars[2].style.color = "grey";
         objeto.stars = 2;
     }
-    else if(objeto.moves >=20 & objeto.moves < 25 ){
+    else if(objeto.moves >=20 /*& objeto.moves < 25 */){
         stars[1].style.color = "grey";
         objeto.stars = 1;
-    }
+    }/*
     else if(objeto.moves >= 25 ){
         stars[0].style.color = "grey";
         objeto.stars = 0;
-    }
+    }*/
 }
 
 /* Write movies when open cards */
